@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %} Afficher CLIENTS {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				Clients à disposition.
+			</p>
+            <table class="table table-bordered table-sm">
+            {% if data %}
+                <thead>
+                    <tr>
+                        <th class="align-middle">
+                            id
+                        </th>
+                        <th class="align-middle">
+                            Nom
+                        </th>
+                        <th class="align-middle">
+							Prénom
+                        </th>
+                        <th class="align-middle">
+
+                        </th>
+                        <th class="align-middle">
+
+                        </th>
+                    </tr>
+                </thead>
+            {% endif %}
+
+            {% for row in data %}
+				<tbody>
+					<tr>
+						<td class="align-middle">
+							{{ row.Id_client }}
+						</td>
+						<td class="align-middle">
+							{{ row.nom }}
+						</td>
+						<td class="align-middle">
+							{{ row.prenom }}
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-primary" href="{{ url_for('client_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-warning" href="{{ url_for('client_update_wtf', id_client_btn_edit_html=row.Id_client) }}" role="button">Edit</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-danger" href="{{ url_for('client_delete_wtf', id_client_btn_delete_html=row.Id_client) }}" role="button">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+            {% else %}
+				<tbody>
+					<tr>
+						<td>
+							Aucun client.
+						</td>
+						<td>
+							<a class="btn btn-primary" href="{{ url_for('client_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+					</tr>
+				</tbody>
+            {% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+

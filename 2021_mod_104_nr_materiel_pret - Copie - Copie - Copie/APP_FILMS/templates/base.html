@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>{% block title %}Matériel de prêt ProClick{% endblock %}</title>
+
+	<!-- Bootstrap CSS en local -->
+	<!-- OM 2020.05.04 OM JE PREFERE GARDER MES FICHIERS CSS ET JS DANS UN REPERTOIRE "EN LOCAL"
+        SINON ON EST TOUJOURS DEPENDANT D'UNE LIAISON A L'INTERNET. -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="{{ url_for('static', filename='js/jquery.slim.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='bootstrap-5.0.0-beta2-dist/js/bootstrap.min.js') }}"></script>
+
+	<!-- Stylesheets en local -->
+	<!-- https://bootswatch.com/darkly/ -->
+	<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootswatch-4/darkly/bootstrap.min.css') }}">-->
+
+	<!-- https://bootswatch.com/superhero/ -->
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootswatch-4/superhero/bootstrap.min.css') }}">
+	<!-- https://flask.palletsprojects.com/en/1.1.x/patterns/favicon/ -->
+	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+	{% block head %}
+	{% endblock %}
+</head>
+<body>
+
+
+{% block header %} {% endblock %}
+
+{% include 'flash_messages.html' %}
+<!-- Navigation -->
+<div class="container">
+	<nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-secondary">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="{{ url_for('mapagepricipale') }}">MOD 104 NICOLAS ROIG</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<!--		Afficher la liste des materiels dans l'ordre (ASC) et tous les materiels (0)-->
+						<a class="nav-link" href="{{ url_for('materiels_afficher', order_by='ASC', Id_materiel_sel=0) }}">Materiels</a>
+					</li>
+					<li class="nav-item">
+						<!--		Afficher de tous les films (0)-->
+						<a class="nav-link" href="{{ url_for('client_afficher', order_by='ASC', Id_client_sel=0) }}">Clients</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+</div>
+
+<!-- End Navigation -->
+
+{% block body %}{% endblock %}
+
+{% block javascript %}
+
+{% endblock %}
+{% include 'footer.html' %}
+</body>
+</html>

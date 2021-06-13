@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %} Afficher MATERIAUX {% endblock %}
+{% block body %}
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<p>
+				Matériaux à disposition.
+			</p>
+            <table class="table table-bordered table-sm">
+            {% if data %}
+                <thead>
+                    <tr>
+                        <th class="align-middle">
+                            id
+                        </th>
+                        <th class="align-middle">
+                            Matériel
+                        </th>
+                        <th class="align-middle">
+							Numéro de série
+                        </th>
+                        <th class="align-middle">
+
+                        </th>
+                        <th class="align-middle">
+
+                        </th>
+                    </tr>
+                </thead>
+            {% endif %}
+
+            {% for row in data %}
+				<tbody>
+					<tr>
+						<td class="align-middle">
+							{{ row.Id_materiel }}
+						</td>
+						<td class="align-middle">
+							{{ row.materiel }}
+						</td>
+						<td class="align-middle">
+							{{ row.numero_de_serie }}
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-primary" href="{{ url_for('materiels_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-warning" href="{{ url_for('materiel_update_wtf', id_materiel_btn_edit_html=row.Id_materiel) }}" role="button">Edit</a>
+						</td>
+						<td class="text-center" class="align-middle">
+							<a class="btn btn-danger" href="{{ url_for('materiel_delete_wtf', id_materiel_btn_delete_html=row.Id_materiel) }}" role="button">Delete</a>
+						</td>
+					</tr>
+				</tbody>
+            {% else %}
+				<tbody>
+					<tr>
+						<td>
+							Aucun matériel.
+						</td>
+						<td>
+							<a class="btn btn-primary" href="{{ url_for('materiels_ajouter_wtf') }}" role="button">Ajouter</a>
+						</td>
+					</tr>
+				</tbody>
+            {% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
