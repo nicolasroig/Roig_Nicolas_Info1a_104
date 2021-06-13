@@ -11,7 +11,7 @@
 				<!-- Protection contre les attaques Cross-Site Request Forgery (CSRF) -->
 				{{ form_delete.hidden_tag() }}
 				<table class="table table-bordered table-sm">
-					{% if data_materiel_associes %}
+					{% if data_client_associes %}
 						<h3>Ce matériel est associé avec le(s) client(s) suivant(s) :</h3>
 					{% else %}
 						<h3>Ce matériel à effacer n'est associé à aucun client.</h3>
@@ -20,15 +20,15 @@
 						<thead>
 							<tr>
 								<th>
-									FILM(S)
+									Client(s)
 								</th>
 							</tr>
 						</thead>
-						{% for row in data_materiel_associes %}
+						{% for row in data_client_associes %}
 							<tbody>
 								<tr>
 									<td>
-										{{ row.nom_film }}
+										{{ row.nom }}
 									</td>
 								</tr>
 							</tbody>

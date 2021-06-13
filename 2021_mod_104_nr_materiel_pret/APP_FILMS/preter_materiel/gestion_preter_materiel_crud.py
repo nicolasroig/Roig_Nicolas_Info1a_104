@@ -92,7 +92,7 @@ def preter_materiel_afficher(order_by, Id_preter_materiel_sel):
             # raise MaBdErreurOperation(f"RGG Exception {msg_erreurs['ErreurNomBD']['message']} {erreur}")
 
     # Envoie la page "HTML" au serveur.
-    return render_template("preter_materiel/preter_materiel_afficher.html", data=data_preter_materiel)
+    return render_template("preter_materiel/preter_materiel_facu_afficher.html", data=data_preter_materiel)
 
 
 """
